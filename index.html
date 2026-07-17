@@ -2,22 +2,142 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>مركز تحميل الصور</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مركز تحميل الصور الاحترافي</title>
     <style>
-        body { font-family: sans-serif; text-align: center; background-color: #f0f2f5; color: #333; padding: 50px 20px; }
-        .card { background: white; padding: 30px; border-radius: 10px; max-width: 400px; margin: 0 auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        h1 { color: #007bff; font-size: 24px; }
-        p { color: #666; margin-bottom: 20px; }
-        .download-btn { display: inline-block; padding: 12px 25px; font-size: 16px; color: #fff; background-color: #28a745; text-decoration: none; border-radius: 5px; font-weight: bold; }
-        .download-btn:hover { background-color: #218838; }
+        /* إعدادات الخلفية مع أنيميشن متدرج الألوان */
+        body { 
+            font-family: sans-serif; 
+            text-align: center; 
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #333; 
+            padding: 50px 20px; 
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* أنيميشن لظهور بطاقة الموقع بشكل سلس من الأسفل */
+        .card { 
+            background: rgba(255, 255, 255, 0.95); 
+            padding: 30px; 
+            border-radius: 20px; 
+            max-width: 400px; 
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 { color: #23a6d5; font-size: 24px; margin-bottom: 10px; }
+        p { color: #666; margin-bottom: 20px; font-size: 16px; }
+
+        /* معاينة الصورة مع تأثير انيميشن ناعم */
+        .preview-img {
+            width: 100%;
+            max-width: 200px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .preview-img:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        /* زر التحميل مع تأثير نبض (Pulse) وتكبير عند تمرير الفأرة */
+        .download-btn { 
+            display: inline-block; 
+            padding: 12px 30px; 
+            font-size: 18px; 
+            color: #fff; 
+            background-color: #28a745; 
+            text-decoration: none; 
+            border-radius: 50px; 
+            font-weight: bold; 
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+            animation: pulse 2s infinite;
+            border: none;
+            cursor: pointer;
+        }
+
+        .download-btn:hover { 
+            transform: scale(1.08);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.6);
+            background-color: #218838;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(40, 167, 69, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
+        }
+
+        /* تأثير رسالة النجاح التفاعلية */
+        .alert-message {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #d4edda;
+            color: #155724;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            display: none;
+            animation: fadeInUp 0.5s ease forwards;
+        }
     </style>
 </head>
 <body>
+
     <div class="card">
-        <h1>خادم تحميل الصور الشخصي 📸</h1>
-        <p>اضغط على الزر بالأسفل لتنزيل الصورة الحقيقية من ترمكس:</p>
-        <a href="https://i.pinimg.com/736x/1f/e7/58/1fe7581c3fc3fd4aeffb1b8e31386ae6.jpg" download="my_picture.jpg" class="download-btn">تنزيل الصورة الآن 📸</a>
+        <h1>خادم تحميل الصور الذكي 📸</h1>
+        <p>معاينة الصورة الحالية:</p>
+        
+        <!-- عرض الصورة داخل الموقع مع الرابط الصحيح الذي أرسلته -->
+        <img src="https://i.pinimg.com/736x/1f/e7/58/1fe7581c3fc3fd4aeffb1b8e31386ae6.jpg" alt="Preview" class="preview-img">
+        
+        <p>اضغط على الزر المتوهج بالأسفل للتنزيل:</p>
+        
+        <!-- زر التحميل مع تفعيل الجافاسكريبت والأنيميشن ورابطك الدقيق -->
+        <a href="https://i.pinimg.com/736x/1f/e7/58/1fe7581c3fc3fd4aeffb1b8e31386ae6.jpg" download="my_picture.jpg" class="download-btn" id="downloadBtn">تنزيل الصورة الآن ✨</a>
+        
+        <!-- مكان ظهور رسالة النجاح -->
+        <div class="alert-message" id="successAlert">🎉 جاري تحميل الصورة بنجاح! شكراً لك.</div>
     </div>
+
+    <!-- كود جافاسكريبت تفاعلي متطور وبسيط للمبتدئين -->
+    <script>
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            // إظهار رسالة النجاح المخفية عند الضغط على الزر
+            const alertBox = document.getElementById('successAlert');
+            alertBox.style.display = 'block';
+            
+            // إخفاء الرسالة تلقائياً بعد 4 ثوانٍ
+            setTimeout(() => {
+                alertBox.style.display = 'none';
+            }, 4000);
+        });
+    </script>
+
 </body>
 </html>
-
